@@ -1,6 +1,6 @@
 function install() {
   console.log('proxying alert in window')
-  window.alert = new Proxy(window.alert, {
+  window.parent.alert = new Proxy(window.parent.alert, {
     apply(actualAlert, that, args) {
     	console.log('intercepting alert')
       const result = Reflect.apply(actualAlert, that, args);
