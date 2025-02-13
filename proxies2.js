@@ -1,7 +1,7 @@
 function generateHandler(name) {
   return {
     apply(actualFetch, that, args) {
-      console.log("intercepted" name)
+      console.log("intercepted", name)
       const result = Reflect.apply(actualFetch, that, args);
       return result;
     }
