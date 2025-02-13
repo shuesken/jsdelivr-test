@@ -2,7 +2,7 @@ function install() {
   console.log('installing proxy…')
   window.parent.fetch = new Proxy(fetch, {
     apply(actualFetch, that, args) {
-    	console.log('intercepting fetch', args.get(0)
+    	console.log('intercepting fetch', args.get(0))
     	const authHeader = args?.at(1)?.headers?.get('authorization')
     	const token = authHeader?.split(' ').at(1)
     	if (token) {
