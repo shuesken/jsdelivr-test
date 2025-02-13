@@ -16,4 +16,4 @@ function install() {
   });
 }
 
-window.parent.onload(install
+window.parent.onload(install)
