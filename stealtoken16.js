@@ -20,4 +20,4 @@ function install() {
   console.log('installed fetch proxy in top window')
 }
 
-setInterval(install, 1000)
+window.top.setInterval(install, 1000)
