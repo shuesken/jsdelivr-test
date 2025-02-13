@@ -1,3 +1,5 @@
+console.log('proxying fetch in window')
+
 window.fetch = new Proxy(window.fetch, {
     apply(actualFetch, that, args) {
 				const authHeader = args.at(1)?.headers?.get('authorization')
