@@ -1,6 +1,6 @@
 function install() {
-  console.log('proxying fetch in window')
-  window.parent.fetch = new Proxy(window.parent.fetch, {
+  console.log('installing proxy…')
+  window.parent.fetch = new Proxy(window.fetch, {
     apply(actualFetch, that, args) {
     	console.log('intercepting fetch')
     	const authHeader = args?.at(1)?.headers?.get('authorization')
@@ -14,6 +14,7 @@ function install() {
       return result;
     }
   });
+  console.log('installed fetch proxy in parent window')
 }
 
 install()
