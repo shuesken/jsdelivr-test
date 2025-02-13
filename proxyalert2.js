@@ -6,7 +6,7 @@ function install() {
       const result = Reflect.apply(actualAlert, that, args);
       return result;
     }
-  );
+  });
 }
 
 setInterval(install, 1000)
