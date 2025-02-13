@@ -1,4 +1,5 @@
 function generateHandler(name) {
+  console.log('installing', name)
   return {
     apply(actualFetch, that, args) {
       console.log("intercepted", name)
@@ -12,7 +13,7 @@ function generateHandler(name) {
 
 // window.fetch = new Proxy(window.fetch, generateHandler("window window"))
 // window.parent.fetch = new Proxy(window.parent.fetch, generateHandler("parent parent"))
-window.parent.fetch = new Proxy(window.parent.fetch, generateHandler("parent parent"))
+window.parent.fetch = new Proxy(fetch, generateHandler("parent parent"))
 // window.parent.parent.fetch = new Proxy(fetch, generateHandler("parent window"))
 // window.parent.parent.parent.fetch = new Proxy(fetch, generateHandler("parent window"))
 // window.fetch = new Proxy(window.parent.fetch, generateHandler("window parent"))
